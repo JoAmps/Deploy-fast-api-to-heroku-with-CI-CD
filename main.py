@@ -6,7 +6,7 @@ import sys
 #sys.path.insert(0, '/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter')
 #sys.path.insert(0,'/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/ml')
 from model import model_functions
-from model import data, model
+from model import data
 import pandas as pd
 import pickle
 from joblib import load

@@ -6,7 +6,7 @@ import sys
 #sys.path.insert(0, '/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter')
 #sys.path.insert(0,'/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/ml')
 from model import model_functions
-from model import data
+from model import data, model
 import pandas as pd
 import pickle
 from joblib import load
@@ -67,7 +67,7 @@ class User(BaseModel):
 
 
 # Loading in model from serialized .pkl file
-with open('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project_3_rearrangements/project 3/deploy_fastapi_heroku/model/model.pkl', 'rb') as file:
+with open('model/model.pkl', 'rb') as file:
   model_object= pickle.load(file)
 
 
@@ -81,8 +81,11 @@ async def get_items():
 @app.post("/")
 async def inferences(user_data: User):
     #model=load("model.joblib")
-    encoder = load("/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/encoder.joblib")
-    lb = load("/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/lb.joblib")    
+    encoder = load("model/encoder.joblib")
+    lb = load("model/lb.joblib")
+
+    #encoder = load("/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/encoder.joblib")
+    #lb = load("/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/lb.joblib")    
     array = np.array([[
                      user_data.age,
                      user_data.workclass,

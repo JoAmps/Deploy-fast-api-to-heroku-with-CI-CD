@@ -67,7 +67,7 @@ class User(BaseModel):
 
 
 # Loading in model from serialized .pkl file
-with open('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/model.pkl', 'rb') as file:
+with open('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project_3_rearrangements/project 3/deploy_fastapi_heroku/model/model.pkl', 'rb') as file:
   model_object= pickle.load(file)
 
 

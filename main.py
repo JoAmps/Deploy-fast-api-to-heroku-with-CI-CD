@@ -3,35 +3,26 @@ author: Hyacinth Ampadu
 Date:10/03/2022
 """
 
-# Put the code for your API here.
-#from typing import Union
 from typing import Literal
 from fastapi import FastAPI
 from pydantic import BaseModel
 from joblib import load
-#import sys
+
 from pandas.core.frame import DataFrame
 import numpy as np
 from model import model_functions
 from model import data
-#import pandas as pd
-#import pickle
-
-
-
-
 
 cat_features = [
-    "workclass",
-    "education",
-    "marital-status",
-    "occupation",
-    "relationship",
-    "race",
-    "sex",
-    "native-country",
+"workclass",
+"education",
+"marital-status",
+"occupation",
+"relationship",
+"race",
+"sex",
+ "native-country",
 ]
-
 
 class User(BaseModel):
     age: int
@@ -72,15 +63,11 @@ class User(BaseModel):
         'Greece', 'Nicaragua', 'Vietnam', 'Hong', 'Ireland', 'Hungary',
         'Holand-Netherlands']
 
-
-
 app = FastAPI()
-
 
 @app.get("/")
 async def get_items():
     return {"message": "Hello, welcome to our app!"}
-
 
 @app.post("/")
 async def inferences(user_data: User):

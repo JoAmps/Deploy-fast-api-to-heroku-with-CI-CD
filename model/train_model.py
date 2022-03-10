@@ -1,14 +1,12 @@
 # Script to train machine learning model.
 
 from sklearn.model_selection import train_test_split
-import sys
 import logging
-import pickle
 from data import process_data
 from clean_data import load_data, cleaned_data
-from model_functions import train_model, compute_model_metrics, model_predictions
-from joblib import dump, load
-import os
+from model_functions import train_model, \
+    compute_model_metrics, model_predictions
+from joblib import dump
 
 
 logging.basicConfig(
@@ -25,7 +23,8 @@ def test_import(cleaned_data):
         logging.info('SUCCESS!: Data has rows and columns!')
     except AssertionError as err:
         logging.error(
-            "Testing import_data: The file doesn't appear to have rows and columns")
+            "Testing import_data: The file doesn't\
+                 appear to have rows and columns")
         raise err
 
 # Optional enhancement, use K-fold cross validation instead of a
@@ -64,10 +63,12 @@ def test_model(train_model):
                 (X_test.shape[0],
                  y_test.shape[0]))
         logging.info(
-            'SUCCESS: dependent and independent training and testing data have equal lengths')
+            'SUCCESS: dependent and independent training\
+                 and testing data have equal lengths')
     except AssertionError as err:
         logging.error(
-            "Lengths of the Independent and dependent training and testing data mismatch")
+            "Lengths of the Independent and dependent training\
+                 and testing data mismatch")
         raise err
 
 
@@ -79,10 +80,12 @@ def test_metrics(compute_model_metrics):
                  predictions.shape[0]))
 
         logging.info(
-            'SUCCESS: predictions and output test data have equal lengths')
+            'SUCCESS: predictions and output test data \
+            have equal lengths')
     except AssertionError as err:
         logging.error(
-            "Lengths of predictions and output test data mismatch")
+            "Lengths of predictions and output test \
+                 data mismatch")
         raise err
 
 
@@ -96,7 +99,8 @@ def model_slicing(data):
         for cls in test[cat].unique():
             df_temp = test[test[cat] == cls]
             X_test_temp, y_test_temp, _, _ = process_data(
-                df_temp, categorical_features=cat_features, label="salary", encoder=encoder, lb=lb, training=False)
+                df_temp, categorical_features=cat_features, \
+                     label="salary", encoder=encoder, lb=lb, training=False)
             y_preds = model.predict(X_test_temp)
             precision_temp, recall_temp, fbeta_temp = compute_model_metrics(
                 y_test_temp, y_preds)
@@ -115,13 +119,17 @@ def model_slicing(data):
 
 
 if __name__ == '__main__':
-    df = load_data('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project_3_rearrangements/project 3/deploy_fastapi_heroku/data/census_cleaned.csv')
+    df = load_data('/Users/hyacinthampadu/Documents/Jos Folder/\
+    Data Science/Udacity mL devops engineer/project_3_rearrangements/\
+        project 3/deploy_fastapi_heroku/data/census_cleaned.csv')
     test_import(cleaned_data)
     train, test = split_data(df)
     X_train, y_train, encoder, lb = process_data(
-        train, categorical_features=cat_features, label="salary", training=True)
+        train, categorical_features=cat_features, \
+            label="salary", training=True)
     X_test, y_test, encoder_t, lb_t = process_data(
-        test, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb)
+        test, categorical_features=cat_features, \
+            label="salary", training=False, encoder=encoder, lb=lb)
     dump(encoder_t, "encoder.joblib")
     dump(lb_t, "lb.joblib")
     test_model(train_model)

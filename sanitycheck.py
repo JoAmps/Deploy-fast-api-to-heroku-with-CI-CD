@@ -3,7 +3,6 @@ from os import path
 import argparse
 import importlib
 import inspect
-import os
 import sys
 
 FAIL_COLOR = '\033[91m'
@@ -13,7 +12,7 @@ WARN_COLOR = '\033[93m'
 
 def run_sanity_check(test_dir):
 
-    #assert path.isdir(test_dir), FAIL_COLOR+f"No direcotry named {test_dir} found in {os.getcwd()}"
+
     print('This script will perform a sanity test\
      to ensure your code meets the criteria in the rubric.\n')
     print('Please enter the path to the file that \
@@ -74,7 +73,8 @@ def run_sanity_check(test_dir):
             source = inspect.getsource(getattr(module, func))
             if source.find('.status_code') != -1:
                 TEST_FOR_GET_METHOD_RESPONSE_CODE = True
-            if (source.find('.json') != -1) or (source.find('json.loads') != -1):
+            if (source.find('.json') != -1) or \
+                (source.find('json.loads') != -1):
                 TEST_FOR_GET_METHOD_RESPONSE_BODY = True
 
         if not TEST_FOR_GET_METHOD_RESPONSE_CODE:
@@ -82,14 +82,17 @@ def run_sanity_check(test_dir):
             WARNING_COUNT += 1
             print(
                 FAIL_COLOR +
-                "Your test case for GET() does not seem to be testing the response code.\n")
+                "Your test case for GET() does not \
+                    seem to be testing the response code.\n")
 
         if not TEST_FOR_GET_METHOD_RESPONSE_BODY:
             print(FAIL_COLOR + f"[{WARNING_COUNT}]")
             WARNING_COUNT += 1
             print(
                 FAIL_COLOR +
-                "Your test case for GET() does not seem to be testing the CONTENTS of the response.\n")
+                "Your test case for GET() does not\
+                     seem to be testing the CONTENTS \
+                         of the response.\n")
 
     # POST()
     TEST_FOR_POST_METHOD_RESPONSE_CODE = False
@@ -123,7 +126,8 @@ def run_sanity_check(test_dir):
             source = inspect.getsource(getattr(module, func))
             if source.find('.status_code') != -1:
                 TEST_FOR_POST_METHOD_RESPONSE_CODE = True
-            if (source.find('.json') != -1) or (source.find('json.loads') != -1):
+            if (source.find('.json') != -1) or \
+                (source.find('json.loads') != -1):
                 TEST_FOR_POST_METHOD_RESPONSE_BODY = True
                 COUNT_POST_METHOD_TEST_FOR_INFERENCE_RESULT += 1
 

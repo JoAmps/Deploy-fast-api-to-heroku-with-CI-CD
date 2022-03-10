@@ -1,7 +1,5 @@
 [core]
-    remote = storage
-['remote "localremote"']
-    url = ../../local_remote_dirs
+    remote = s3-remote
 ['remote "s3-remote"']
     url = s3://uda-deployment-project
 ['remote "storage"']

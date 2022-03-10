@@ -28,4 +28,3 @@ def cleaned_data(df):
 if __name__ == '__main__':
     df = load_data("census.csv")
     cleaned_data(df)
-

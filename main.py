@@ -1,18 +1,25 @@
+"""
+author: Hyacinth Ampadu
+Date:10/03/2022
+"""
+
 # Put the code for your API here.
-from typing import Union
-from fastapi import FastAPI, Request
+#from typing import Union
+from typing import Literal
+from fastapi import FastAPI
 from pydantic import BaseModel
-import sys
-#sys.path.insert(0, '/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter')
-#sys.path.insert(0,'/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/ml')
+from joblib import load
+#import sys
+from pandas.core.frame import DataFrame
+import numpy as np
 from model import model_functions
 from model import data
-import pandas as pd
-import pickle
-from joblib import load
-from typing import Literal
-import numpy as np
-from pandas.core.frame import DataFrame
+#import pandas as pd
+#import pickle
+
+
+
+
 
 cat_features = [
     "workclass",
@@ -66,11 +73,6 @@ class User(BaseModel):
         'Holand-Netherlands']
 
 
-# Loading in model from serialized .pkl file
-# with open('model/model.pkl', 'rb') as file:
- #   model/model.pkl
- # model_object= pickle.load(file)
-
 
 app = FastAPI()
 
@@ -86,8 +88,6 @@ async def inferences(user_data: User):
     encoder = load("model/encoder.joblib")
     lb = load("model/lb.joblib")
 
-    #encoder = load("/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/encoder.joblib")
-    #lb = load("/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project 3/starter/starter/lb.joblib")
     array = np.array([[
                      user_data.age,
                      user_data.workclass,

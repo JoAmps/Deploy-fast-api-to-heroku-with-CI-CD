@@ -67,8 +67,9 @@ class User(BaseModel):
 
 
 # Loading in model from serialized .pkl file
-with open('model/model.pkl', 'rb') as file:
-  model_object= pickle.load(file)
+#with open('model/model.pkl', 'rb') as file:
+ #   model/model.pkl
+ # model_object= pickle.load(file)
 
 
 app = FastAPI()
@@ -80,7 +81,7 @@ async def get_items():
 
 @app.post("/")
 async def inferences(user_data: User):
-    #model=load("model.joblib")
+    model=load("model/model.joblib")
     encoder = load("model/encoder.joblib")
     lb = load("model/lb.joblib")
 

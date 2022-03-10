@@ -67,9 +67,11 @@ class User(BaseModel):
 
 app = FastAPI()
 
+
 @app.get("/")
 async def get_items():
     return {"message": "Hello, welcome to our app!"}
+
 
 @app.post("/")
 async def inferences(user_data: User):

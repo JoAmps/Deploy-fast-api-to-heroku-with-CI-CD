@@ -44,7 +44,7 @@ def model_predictions(X_test, model):
 
 def compute_model_metrics(y, preds):
     """
-    Validates the trained machine learning model 
+    Validates the trained machine learning model
     using precision, recall, and F1.
 
     Inputs

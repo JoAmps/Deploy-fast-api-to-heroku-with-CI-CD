@@ -28,4 +28,4 @@ def cleaned_data(df):
 if __name__ == '__main__':
     df = load_data("census.csv")
     cleaned_data(df)
-    # This is a new line that ends the file.
+# This is a new line that ends the file.

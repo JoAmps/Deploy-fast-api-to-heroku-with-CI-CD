@@ -72,7 +72,7 @@ def run_sanity_check(test_dir):
             if source.find('.status_code') != -1:
                 TEST_FOR_GET_METHOD_RESPONSE_CODE = True
             if (source.find('.json') != -1) or \
-                (source.find('json.loads') != -1):
+                    (source.find('json.loads') != -1):
                 TEST_FOR_GET_METHOD_RESPONSE_BODY = True
 
         if not TEST_FOR_GET_METHOD_RESPONSE_CODE:
@@ -125,7 +125,7 @@ def run_sanity_check(test_dir):
             if source.find('.status_code') != -1:
                 TEST_FOR_POST_METHOD_RESPONSE_CODE = True
             if (source.find('.json') != -1) or \
-                (source.find('json.loads') != -1):
+                    (source.find('json.loads') != -1):
                 TEST_FOR_POST_METHOD_RESPONSE_BODY = True
                 COUNT_POST_METHOD_TEST_FOR_INFERENCE_RESULT += 1
 

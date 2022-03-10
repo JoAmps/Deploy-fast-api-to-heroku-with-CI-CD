@@ -16,7 +16,7 @@ data = {
     "hoursPerWeek": 60,
     "nativeCountry": "United-States"
     }
-r = requests.post('https://dashboard.heroku.com/apps/employees-salary', json=data)
+r = requests.post('https://employees-salary.herokuapp.com', json=data)
 
 assert r.status_code == 200
 

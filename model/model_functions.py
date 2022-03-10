@@ -1,6 +1,6 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 import logging
-from sklearn.ensemble import RandomForestClassifier 
+from sklearn.ensemble import RandomForestClassifier
 import pickle
 import joblib
 
@@ -22,23 +22,25 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
     try:
-        model=RandomForestClassifier()
-        model.fit(X_train,y_train)
+        model = RandomForestClassifier()
+        model.fit(X_train, y_train)
         logging.info('SUCCESS!:Model trained and saved')
         joblib.dump(model, "model.joblib")
         file = open('model.pkl', 'wb')
-        pickle.dump(model,file)
+        pickle.dump(model, file)
         return model
-    except:
-         logging.info('ERROR!:Model not trained and not saved')
+    except BaseException:
+        logging.info('ERROR!:Model not trained and not saved')
+
 
 def model_predictions(X_test, model):
     try:
-        predictions=model.predict(X_test)
+        predictions = model.predict(X_test)
         logging.info('SUCCESS!:Model predictions generated')
         return predictions
-    except:
-        logging.info('ERROR!:Model predictions not generated')    
+    except BaseException:
+        logging.info('ERROR!:Model predictions not generated')
+
 
 def compute_model_metrics(y, preds):
     """
@@ -62,11 +64,8 @@ def compute_model_metrics(y, preds):
         recall = recall_score(y, preds, zero_division=1)
         logging.info('SUCCESS: Model scoring completed')
         return precision, recall, fbeta
-    except:
+    except BaseException:
         logging.info('ERROR: Error occurred when scoring Models')
-
-
-
 
 
 def inference(model, X):
@@ -83,5 +82,5 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    preds=model.predict(X)
+    preds = model.predict(X)
     return preds

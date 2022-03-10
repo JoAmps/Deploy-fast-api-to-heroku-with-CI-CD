@@ -128,7 +128,7 @@ if __name__ == '__main__':
         train, categorical_features=cat_features,
         label="salary", training=True)
     X_test, y_test, encoder_t, lb_t = process_data(
-        test, categorical_features=cat_features, 
+        test, categorical_features=cat_features,
         label="salary", training=False, encoder=encoder, lb=lb)
     dump(encoder_t, "encoder.joblib")
     dump(lb_t, "lb.joblib")

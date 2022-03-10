@@ -99,8 +99,8 @@ def model_slicing(data):
         for cls in test[cat].unique():
             df_temp = test[test[cat] == cls]
             X_test_temp, y_test_temp, _, _ = process_data(
-                df_temp, categorical_features=cat_features, \
-                     label="salary", encoder=encoder, lb=lb, training=False)
+                df_temp, categorical_features=cat_features,
+                label="salary", encoder=encoder, lb=lb, training=False)
             y_preds = model.predict(X_test_temp)
             precision_temp, recall_temp, fbeta_temp = compute_model_metrics(
                 y_test_temp, y_preds)
@@ -125,11 +125,11 @@ if __name__ == '__main__':
     test_import(cleaned_data)
     train, test = split_data(df)
     X_train, y_train, encoder, lb = process_data(
-        train, categorical_features=cat_features, \
-            label="salary", training=True)
+        train, categorical_features=cat_features,
+        label="salary", training=True)
     X_test, y_test, encoder_t, lb_t = process_data(
-        test, categorical_features=cat_features, \
-            label="salary", training=False, encoder=encoder, lb=lb)
+        test, categorical_features=cat_features, 
+        label="salary", training=False, encoder=encoder, lb=lb)
     dump(encoder_t, "encoder.joblib")
     dump(lb_t, "lb.joblib")
     test_model(train_model)

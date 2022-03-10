@@ -11,8 +11,6 @@ WARN_COLOR = '\033[93m'
 
 
 def run_sanity_check(test_dir):
-
-
     print('This script will perform a sanity test\
      to ensure your code meets the criteria in the rubric.\n')
     print('Please enter the path to the file that \
@@ -127,7 +125,7 @@ def run_sanity_check(test_dir):
             if source.find('.status_code') != -1:
                 TEST_FOR_POST_METHOD_RESPONSE_CODE = True
             if (source.find('.json') != -1) or \
-                (source.find('json.loads') != -1):
+                 (source.find('json.loads') != -1):
                 TEST_FOR_POST_METHOD_RESPONSE_BODY = True
                 COUNT_POST_METHOD_TEST_FOR_INFERENCE_RESULT += 1
 

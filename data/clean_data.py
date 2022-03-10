@@ -24,6 +24,7 @@ def cleaned_data(df):
     except BaseException:
         logging.info('ERROR Data could not be cleaned')
 
+
 if __name__ == '__main__':
     df = load_data("census.csv")
     cleaned_data(df)

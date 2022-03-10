@@ -14,15 +14,16 @@ from model import model_functions
 from model import data
 
 cat_features = [
-"workclass",
-"education",
-"marital-status",
-"occupation",
-"relationship",
-"race",
-"sex",
- "native-country",
-]
+    "workclass",
+    "education",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native-country",
+    ]
+
 
 class User(BaseModel):
     age: int
@@ -62,6 +63,7 @@ class User(BaseModel):
         'Outlying-US(Guam-USVI-etc)', 'Scotland', 'Trinadad&Tobago',
         'Greece', 'Nicaragua', 'Vietnam', 'Hong', 'Ireland', 'Hungary',
         'Holand-Netherlands']
+
 
 app = FastAPI()
 

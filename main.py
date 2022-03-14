@@ -12,6 +12,7 @@ from pandas.core.frame import DataFrame
 import numpy as np
 from model import model_functions
 from model import data
+import pickle
 
 
 import os
@@ -38,12 +39,12 @@ class User(BaseModel):
     age: int
     workclass: Literal[
         'State-gov', 'Self-emp-not-inc', 'Private', 'Federal-gov',
-        'Local-gov', 'Self-emp-inc', 'Without-pay']
+        'Local-gov', 'Self-emp-inc', 'Without-pay']   
     education: Literal[
         'Bachelors', 'HS-grad', '11th', 'Masters', '9th',
         'Some-college',
         'Assoc-acdm', '7th-8th', 'Doctorate', 'Assoc-voc', 'Prof-school',
-        '5th-6th', '10th', 'Preschool', '12th', '1st-4th']
+        '5th-6th', '10th', 'Preschool', '12th', '1st-4th']   
     maritalStatus: Literal[
         'Never-married', 'Married-civ-spouse', 'Divorced',
         'Married-spouse-absent', 'Separated', 'Married-AF-spouse',

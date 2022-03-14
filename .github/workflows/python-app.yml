@@ -24,23 +24,13 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.ACCESSKEYID }}
-          aws-secret-access-key: ${{ secrets.SECRETACCESSKEY}}
+          aws-secret-access-key: ${{ secrets.SECRETACCESSKEY }}
           aws-region: us-east-1
       - name: Setup DVC
         uses: iterative/setup-dvc@v1
-     
+      - name: Pull data from DVC
+        run: dvc pull data -R
       - name: Run pytest
         run: pytest  
       - name: Run Flake8
         run: flake8
-      - name: Pull data from DVC
-        run: dvc pull data -R  
-      - name: Deploy to Heroku
-      env:
-        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-      if: github.ref == 'refs/heads/main' && job.status == 'success'
-      run: |
-        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
-        git push heroku HEAD:main -f  
- 

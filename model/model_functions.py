@@ -1,7 +1,8 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 import logging
 from sklearn.ensemble import RandomForestClassifier
-from imblearn.over_sampling import ADASYN, SMOTE
+from imblearn.over_sampling import SMOTE
+
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -33,8 +34,6 @@ def train_model(X_train, y_train):
 def model_predictions(X_test, model):
     try:
         predictions = model.predict(X_test)
-        print(model.predict(X_test[:20]))
-        #X_test.to_csv('testthese.csv')
         logging.info('SUCCESS!:Model predictions generated')
         return predictions
     except BaseException:

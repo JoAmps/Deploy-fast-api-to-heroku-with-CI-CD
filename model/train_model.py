@@ -8,7 +8,6 @@ from model_functions import train_model, \
     compute_model_metrics, model_predictions
 from joblib import dump
 
-import pandas as pd
 
 
 logging.basicConfig(
@@ -133,9 +132,8 @@ if __name__ == '__main__':
     X_test, y_test, encoder_t, lb_t = process_data(
         test, categorical_features=cat_features,
         label="salary", training=False, encoder=encoder, lb=lb)
-    dump(encoder_t, 'encoder.joblib')    
-    dump(lb_t, 'lb.joblib')  
-    #pd.DataFrame(X_test).to_csv('testings.csv')   
+    dump(encoder_t, 'encoder.joblib')
+    dump(lb_t, 'lb.joblib')
     test_model(train_model)
     model = train_model(X_train, y_train)
     dump(model, 'model.joblib')

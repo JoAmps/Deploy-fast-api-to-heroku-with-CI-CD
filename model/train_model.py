@@ -119,9 +119,7 @@ def model_slicing(data):
 
 
 if __name__ == '__main__':
-    df = load_data('/Users/hyacinthampadu/Documents/\
-        Jos Folder/Data Science/Udacity mL devops engineer/\
-            project_3_rearrangements/project 3/Project_3/data/census_cleaned.csv')
+    df = load_data('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project_3_rearrangements/project 3/Project_3/data/census_cleaned.csv')
     test_import(cleaned_data)
     train, test = split_data(df)
     X_train, y_train, encoder, lb = process_data(

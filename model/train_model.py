@@ -8,6 +8,8 @@ from model_functions import train_model, \
     compute_model_metrics, model_predictions
 from joblib import dump
 
+import pandas as pd
+
 
 logging.basicConfig(
     filename='./log',
@@ -119,17 +121,24 @@ def model_slicing(data):
 
 
 if __name__ == '__main__':
-    df = load_data('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/Udacity mL devops engineer/project_3_rearrangements/project 3/Project_3/data/census_cleaned.csv')
+    df = load_data('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/\
+        Udacity mL devops engineer/project_3_rearrangements/\
+            project 3/Project_3/data/census_cleaned.csv')
     test_import(cleaned_data)
     train, test = split_data(df)
+    test.to_csv('testings.csv')
     X_train, y_train, encoder, lb = process_data(
         train, categorical_features=cat_features,
         label="salary", training=True)
     X_test, y_test, encoder_t, lb_t = process_data(
         test, categorical_features=cat_features,
         label="salary", training=False, encoder=encoder, lb=lb)
+    dump(encoder_t, 'encoder.joblib')    
+    dump(lb_t, 'lb.joblib')  
+    #pd.DataFrame(X_test).to_csv('testings.csv')   
     test_model(train_model)
     model = train_model(X_train, y_train)
+    dump(model, 'model.joblib')
     predictions = model_predictions(X_test, model)
     test_metrics(compute_model_metrics)
     precision, recall, fbeta = compute_model_metrics(y_test, predictions)

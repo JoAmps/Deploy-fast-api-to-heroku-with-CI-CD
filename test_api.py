@@ -28,15 +28,15 @@ def test_get_malformed(client):
 
 def test_post_above(client):
     r = client.post("/", json={
-        "age": 65,
+        "age": 60,
         "workclass": "Private",
         "education": "Doctorate",
-        "maritalStatus": "Married-civ-spouse",
-        "occupation": "Exec-managerial",
-        "relationship": "Husband",
+        "maritalStatus": "Divorced",
+        "occupation": "Transport-moving",
+        "relationship": "Not-in-family",
         "race": "White",
         "sex": "Male",
-        "hoursPerWeek": 60,
+        "hoursPerWeek": 76,
         "nativeCountry": "United-States"
     })
     assert r.status_code == 200
@@ -45,7 +45,7 @@ def test_post_above(client):
 
 def test_post_below(client):
     r = client.post("/", json={
-        "age": 19,
+        "age": 16,
         "workclass": "Private",
         "education": "HS-grad",
         "maritalStatus": "Never-married",

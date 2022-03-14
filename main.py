@@ -12,9 +12,6 @@ from pandas.core.frame import DataFrame
 import numpy as np
 from model import model_functions
 from model import data
-
-
-
 import os
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
@@ -44,7 +41,7 @@ class User(BaseModel):
         'Bachelors', 'HS-grad', '11th', 'Masters', '9th',
         'Some-college',
         'Assoc-acdm', '7th-8th', 'Doctorate', 'Assoc-voc', 'Prof-school',
-        '5th-6th', '10th', 'Preschool', '12th', '1st-4th']  
+        '5th-6th', '10th', 'Preschool', '12th', '1st-4th']
     maritalStatus: Literal[
         'Never-married', 'Married-civ-spouse', 'Divorced',
         'Married-spouse-absent', 'Separated', 'Married-AF-spouse',

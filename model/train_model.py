@@ -8,8 +8,6 @@ from model_functions import train_model, \
     compute_model_metrics, model_predictions
 from joblib import dump
 
-
-
 logging.basicConfig(
     filename='./log',
     level=logging.INFO,
@@ -120,8 +118,8 @@ def model_slicing(data):
 
 
 if __name__ == '__main__':
-    df = load_data('/Users/hyacinthampadu/Documents/Jos Folder/Data Science/\
-        Udacity mL devops engineer/project_3_rearrangements/\
+    df = load_data('/Users/hyacinthampadu/Documents/Jos Folder/\
+        Data Science/Udacity mL devops engineer/project_3_rearrangements/\
             project 3/Project_3/data/census_cleaned.csv')
     test_import(cleaned_data)
     train, test = split_data(df)

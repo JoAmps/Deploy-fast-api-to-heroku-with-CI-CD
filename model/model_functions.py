@@ -1,8 +1,6 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 import logging
 from sklearn.ensemble import RandomForestClassifier
-import pickle
-import joblib
 
 
 # Optional: implement hyperparameter tuning.
@@ -25,9 +23,6 @@ def train_model(X_train, y_train):
         model = RandomForestClassifier()
         model.fit(X_train, y_train)
         logging.info('SUCCESS!:Model trained and saved')
-        #joblib.dump(model, "model.joblib")
-        #file = open('model.pkl', 'wb')
-        #pickle.dump(model, file)
         return model
     except BaseException:
         logging.info('ERROR!:Model not trained and not saved')

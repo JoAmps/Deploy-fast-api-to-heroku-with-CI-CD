@@ -40,7 +40,7 @@ def test_post_above(client):
         "nativeCountry": "United-States"
     })
     assert r.status_code == 200
-    assert r.json() == {"prediction":" <=50K"}
+    assert r.json() == {"prediction":"<=50K"}
 
 
 def test_post_below(client):
@@ -57,7 +57,7 @@ def test_post_below(client):
         "nativeCountry": "United-States"
     })
     assert r.status_code == 200
-    assert r.json() == {"prediction":" <=50K"}
+    assert r.json() == {"prediction":"<=50K"}
 
 
 def test_post_malformed(client):
@@ -74,3 +74,4 @@ def test_post_malformed(client):
         "nativeCountry": "United-States"
     })
     assert r.status_code != 200
+    

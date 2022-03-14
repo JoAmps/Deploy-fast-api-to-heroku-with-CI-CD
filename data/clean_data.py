@@ -14,7 +14,7 @@ def load_data(path):
 def cleaned_data(df):
     try:
         df.columns = df.columns.str.strip()
-        df['salary']=df['salary'].str.strip()
+        df['salary'] = df['salary'].str.strip()
         df.drop("fnlgt", axis="columns", inplace=True)
         df.drop("education-num", axis="columns", inplace=True)
         df.drop("capital-gain", axis="columns", inplace=True)
